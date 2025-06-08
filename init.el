@@ -88,6 +88,22 @@
   :config
   (setq which-key-idle-delay 1))
 
+(use-package general)
+
+(use-package org-journal
+  :custom
+  (org-journal-dir (expand-file-name "~/Documents/Journal/"))
+  (org-journal-file-format "%B %d %Y.org")
+  (org-journal-date-format "%B %d, %Y")
+  (org-journal-file-header "%B %d, %Y\n\n"))
+
+(general-create-definer my-leader-def
+  :states '(normal visual emacs)
+  :prefix "SPC")
+
+(my-leader-def
+  "n j j" '(org-journal-new-entry :which-key "new journal entry"))
+
 (use-package evil
   :init
   (setq evil-want-integration t)
