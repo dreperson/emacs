@@ -88,6 +88,13 @@
   :config
   (setq which-key-idle-delay 1))
 
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  :config
+  (evil-mode 1))
+
 ;; Keybindings
 (global-set-key (kbd "C-x r") 'recentf-open-files)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit) ; ESC quits prompts
