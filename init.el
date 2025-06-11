@@ -79,7 +79,9 @@
   :prefix "SPC")
 
 (my-leader-def
-  "n j j" '(org-journal-new-entry :which-key "new journal entry"))
+  "n j j" '(org-journal-new-entry :which-key "new journal entry")
+  "-" '(split-window-below :which-key "split horizontally")
+  "|" '(split-window-right :which-key "split vertically"))
 
 ;;; Evil mode
 (use-package evil
