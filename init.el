@@ -65,6 +65,29 @@
   :diminish which-key-mode
   :config (setq which-key-idle-delay 1))
 (use-package general)
+(use-package projectile
+  :diminish projectile-mode
+  :config
+  (projectile-mode 1)
+  (setq projectile-completion-system 'auto)
+  (setq projectile-enable-caching t)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+(use-package dashboard
+  :init
+  (setq dashboard-banner-logo-title "okayyy let's go")
+  (setq dashboard-startup-banner 'logo)
+  (setq dashboard-center-content t)
+  (setq dashboard-vertically-center-content t)
+  (setq dashboard-display-icons-p t)
+  (setq dashboard-icon-type 'nerd-icons)
+  (setq dashboard-items '((recents  . 5)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          (agenda . 5)))
+  (setq initial-buffer-choice (lambda ()
+                                (get-buffer-create dashboard-buffer-name)))
+  :config
+  (dashboard-setup-startup-hook))
 
 ;;; Org-journal configuration
 (use-package org-journal
@@ -81,7 +104,8 @@
 (my-leader-def
   "n j j" '(org-journal-new-entry :which-key "new journal entry")
   "-" '(split-window-below :which-key "split horizontally")
-  "|" '(split-window-right :which-key "split vertically"))
+  "|" '(split-window-right :which-key "split vertically")
+  "p" '(projectile-command-map :which-key "projectile"))
 
 ;;; Evil mode
 (use-package evil
