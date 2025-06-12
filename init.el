@@ -134,3 +134,9 @@
                                 (executable-find "hunspell"))
         ispell-dictionary "en_US"))
 
+(use-package pdf-tools
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page)
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode)))
+
