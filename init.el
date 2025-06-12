@@ -114,6 +114,13 @@
         evil-want-keybinding nil)
   :config (evil-mode 1))
 
+;;; Evil Collection - additional keybindings for Evil mode
+(use-package evil-collection
+  :after evil
+  :custom (evil-collection-mode-list 'all)
+  :config
+  (evil-collection-init))
+
 ;;; Global key bindings
 (global-set-key (kbd "C-x r") 'recentf-open-files)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
