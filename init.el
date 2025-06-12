@@ -94,3 +94,12 @@
 (global-set-key (kbd "C-x r") 'recentf-open-files)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;;; Spell checking
+(use-package flyspell
+  :hook ((text-mode . flyspell-mode)
+         (prog-mode . flyspell-prog-mode))
+  :init
+  (setq ispell-program-name (or (executable-find "aspell")
+                                (executable-find "hunspell"))
+        ispell-dictionary "en_US"))
+
