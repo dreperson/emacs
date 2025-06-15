@@ -109,14 +109,17 @@
 
 ;;; Evil mode
 (use-package evil
+  :demand t
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil)
-  :config (evil-mode 1))
+  :config
+  (evil-mode 1))
 
 ;;; Evil Collection - additional keybindings for Evil mode
 (use-package evil-collection
   :after evil
+  :demand t
   :custom (evil-collection-mode-list 'all)
   :config
   (evil-collection-init))
