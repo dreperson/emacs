@@ -64,6 +64,16 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :config (setq which-key-idle-delay 1))
+(use-package ivy
+  :diminish
+  :init
+  (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
+  :config
+  (ivy-mode 1))
+(use-package counsel
+  :after ivy
+  :config
+  (counsel-mode 1))
 (use-package general)
 (use-package projectile
   :diminish projectile-mode
@@ -105,7 +115,8 @@
   "n j j" '(org-journal-new-entry :which-key "new journal entry")
   "-" '(split-window-below :which-key "split horizontally")
   "|" '(split-window-right :which-key "split vertically")
-  "p" '(projectile-command-map :which-key "projectile"))
+  "p" '(projectile-command-map :which-key "projectile")
+  "f f" '(counsel-find-file :which-key "find file"))
 
 ;;; Evil mode
 (use-package evil
