@@ -97,6 +97,12 @@
         projectile-enable-caching t)
   (define-key projectile-mode-map (kbd "C-c p") #'projectile-command-map))
 
+(use-package magit
+  :commands magit-status
+  :general
+  (my-leader-def
+    "g g" '(magit-status :which-key "git status")))
+
 (use-package dashboard
   :init
   (setq dashboard-banner-logo-title "okayyy let's go"
@@ -151,6 +157,7 @@
 
 ;;; Global key bindings
 (global-set-key (kbd "C-x r") #'recentf-open-files)
+(global-set-key (kbd "C-x g") #'magit-status)
 (global-set-key (kbd "<escape>") #'keyboard-escape-quit)
 
 ;;; Spell checking
