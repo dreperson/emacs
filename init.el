@@ -87,11 +87,26 @@
   :after ivy
   :config (counsel-mode 1))
 
+
 (use-package general)
 
 (general-create-definer my-leader-def
   :states '(normal visual emacs)
   :prefix "SPC")
+
+(use-package treemacs
+  :defer t
+  :general
+  (my-leader-def
+    "t t" '(treemacs :which-key "treemacs"))
+  :config
+  (setq treemacs-is-never-other-window t
+        treemacs-width 30)
+  (add-hook 'projectile-after-switch-project-hook
+            #'treemacs-display-current-project-exclusively))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
 
 (use-package projectile
   :diminish projectile-mode
@@ -138,6 +153,7 @@
   "-" '(split-window-below :which-key "split horizontally")
   "|" '(split-window-right :which-key "split vertically")
   "p" '(projectile-command-map :which-key "projectile")
+  "p t" '(treemacs-projectile :which-key "treemacs project")
   "f f" '(counsel-find-file :which-key "find file"))
 
 ;;; Evil
