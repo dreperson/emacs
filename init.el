@@ -89,6 +89,10 @@
 
 (use-package general)
 
+(general-create-definer my-leader-def
+  :states '(normal visual emacs)
+  :prefix "SPC")
+
 (use-package projectile
   :diminish projectile-mode
   :config
@@ -129,10 +133,6 @@
   (org-journal-file-header "%B %d, %Y\n\n"))
 
 ;;; Key bindings
-(general-create-definer my-leader-def
-  :states '(normal visual emacs)
-  :prefix "SPC")
-
 (my-leader-def
   "n j j" '(org-journal-new-entry :which-key "new journal entry")
   "-" '(split-window-below :which-key "split horizontally")
