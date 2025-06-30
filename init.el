@@ -148,6 +148,8 @@
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-date-prefix "")
   (org-journal-date-format (lambda (_time) "* Mood:"))
+  ;; Prefix each entry with a 12-hour timestamp
+  (org-journal-time-format "%I:%M %p ")
   (org-journal-file-header "%B %d, %Y\n\n")
   ;; Open journal entries in the current window
   (org-journal-find-file 'find-file))
