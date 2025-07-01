@@ -147,7 +147,7 @@
   ;; Use a numeric filename so org-journal can parse dates correctly
   (org-journal-file-format "%Y-%m-%d.org")
   (org-journal-date-prefix "")
-  (org-journal-date-format "")
+  (org-journal-date-format "%B %d, %Y")
   (org-journal-file-header "%B %d, %Y\n\n")
   ;; Open journal entries in the current window
   (org-journal-find-file 'find-file))
