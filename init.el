@@ -29,6 +29,9 @@
 
 ;;; File handling
 (recentf-mode 1)
+(setq recentf-max-saved-items 100
+      recentf-auto-cleanup 'never)
+(add-hook 'kill-emacs-hook #'recentf-save-list)
 (save-place-mode 1)
 (windmove-default-keybindings)
 (global-auto-revert-mode 1)
@@ -134,10 +137,17 @@
                           (bookmarks . 5)
                           (projects . 5)
                           (agenda . 5))
+        dashboard-item-shortcuts '((recents  . "r")
+                                   (bookmarks . "m")
+                                   (projects  . "p")
+                                   (agenda    . "a"))
         initial-buffer-choice (lambda ()
                                 (get-buffer-create dashboard-buffer-name)))
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal dashboard-mode-map
+      (kbd "r") #'recentf-open-files)))
 
 ;;; Org-journal
 (use-package org-journal
