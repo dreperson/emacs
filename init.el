@@ -168,13 +168,21 @@
   (org-journal-find-file 'find-file))
 
 ;;; Key bindings
+(defun my-save-and-close-buffer ()
+  "Save the current buffer and close it."
+  (interactive)
+  (save-buffer)
+  (kill-this-buffer))
+
 (my-leader-def
   "n j j" '(org-journal-new-entry :which-key "new journal entry")
   "-" '(split-window-below :which-key "split horizontally")
   "|" '(split-window-right :which-key "split vertically")
   "p" '(projectile-command-map :which-key "projectile")
   "p t" '(treemacs-projectile :which-key "treemacs project")
-  "f f" '(counsel-find-file :which-key "find file"))
+  "f f" '(counsel-find-file :which-key "find file")
+  "f s" '(save-buffer :which-key "save file")
+  "f q" '(my-save-and-close-buffer :which-key "save and close"))
 
 ;;; Evil
 (use-package evil
