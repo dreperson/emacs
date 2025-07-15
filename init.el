@@ -174,6 +174,12 @@
   (save-buffer)
   (kill-this-buffer))
 
+(defun my-end-of-buffer-line ()
+  "Jump to the end of the buffer and then to the end of that line."
+  (interactive)
+  (evil-goto-line)
+  (evil-end-of-line))
+
 (my-leader-def
   "n j j" '(org-journal-new-entry :which-key "new journal entry")
   "-" '(split-window-below :which-key "split horizontally")
@@ -182,7 +188,8 @@
   "p t" '(treemacs-projectile :which-key "treemacs project")
   "f f" '(counsel-find-file :which-key "find file")
   "f s" '(save-buffer :which-key "save file")
-  "f q" '(my-save-and-close-buffer :which-key "save and close"))
+  "f q" '(my-save-and-close-buffer :which-key "save and close")
+  "e" '(my-end-of-buffer-line :which-key "goto EOF"))
 
 ;;; Evil
 (use-package evil
