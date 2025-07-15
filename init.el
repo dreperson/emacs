@@ -22,6 +22,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
+(blink-cursor-mode 1)
 (set-fringe-mode 10)
 (global-visual-line-mode 1)
 ;; Keep one line visible below the cursor to avoid the mode line
@@ -198,6 +199,9 @@
   (setq evil-want-integration t
         evil-want-keybinding nil)
   :config
+  (setq evil-normal-state-cursor 'box
+        evil-insert-state-cursor 'bar
+        evil-visual-state-cursor 'hollow)
   (evil-mode 1))
 
 (use-package evil-collection
