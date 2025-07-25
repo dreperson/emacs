@@ -203,16 +203,7 @@
         evil-visual-state-cursor 'hollow)
   :config
   (evil-mode 1)
-  (defun my-cursor-normal-state ()
-    "Use a non-blinking box cursor."
-    (setq cursor-type 'box)
-    (blink-cursor-mode 0))
-  (defun my-cursor-insert-state ()
-    "Use a blinking bar cursor."
-    (setq cursor-type 'bar)
-    (blink-cursor-mode 1))
-  (add-hook 'evil-insert-state-entry-hook #'my-cursor-insert-state)
-  (add-hook 'evil-insert-state-exit-hook #'my-cursor-normal-state))
+)
 
 (use-package evil-collection
   :after evil
@@ -241,5 +232,23 @@
   (pdf-tools-install)
   (setq-default pdf-view-display-size 'fit-page))
 
+(defun my/evil-cursor-box-normal ()
+  "Use a steady block cursor in terminal for Normal mode."
+  (send-string-to-terminal "[2 q"))  ;; DECSCUSR: steady block
+
+(defun my/evil-cursor-bar-insert ()
+  "Use a steady bar cursor in terminal for Insert mode."
+  (send-string-to-terminal "[6 q"))  ;; DECSCUSR: steady bar
+
+(defun my/evil-cursor-underline-visual ()
+  "Use a steady underline cursor in terminal for Visual mode."
+  (send-string-to-terminal "[4 q"))  ;; DECSCUSR: steady underline
+
+(add-hook 'evil-normal-state-entry-hook #'my/evil-cursor-box-normal)
+(add-hook 'evil-insert-state-entry-hook #'my/evil-cursor-bar-insert)
+(add-hook 'evil-visual-state-entry-hook #'my/evil-cursor-underline-visual)
+
+;; Make sure we start with a block cursor when Emacs launches
+(add-hook 'window-setup-hook #'my/evil-cursor-box-normal)
 (provide 'init)
 ;;; init.el ends here
