@@ -22,7 +22,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
-(blink-cursor-mode 1)
+(blink-cursor-mode 0)
 (set-fringe-mode 10)
 (global-visual-line-mode 1)
 ;; Keep one line visible below the cursor to avoid the mode line
@@ -202,7 +202,15 @@
         evil-insert-state-cursor 'bar
         evil-visual-state-cursor 'hollow)
   :config
-  (evil-mode 1))
+  (evil-mode 1)
+  (defun my-enable-blink-cursor ()
+    "Enable cursor blinking."
+    (blink-cursor-mode 1))
+  (defun my-disable-blink-cursor ()
+    "Disable cursor blinking."
+    (blink-cursor-mode 0))
+  (add-hook 'evil-insert-state-entry-hook #'my-enable-blink-cursor)
+  (add-hook 'evil-insert-state-exit-hook #'my-disable-blink-cursor))
 
 (use-package evil-collection
   :after evil
