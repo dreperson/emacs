@@ -197,11 +197,11 @@
   :demand t
   :init
   (setq evil-want-integration t
-        evil-want-keybinding nil)
-  :config
-  (setq evil-normal-state-cursor 'box
+        evil-want-keybinding nil
+        evil-normal-state-cursor 'box
         evil-insert-state-cursor 'bar
         evil-visual-state-cursor 'hollow)
+  :config
   (evil-mode 1))
 
 (use-package evil-collection
