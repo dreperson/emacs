@@ -32,10 +32,6 @@
 (load-theme 'misterioso t)
 
 ;;; File handling
-(recentf-mode 1)
-(setq recentf-max-saved-items 100
-      recentf-auto-cleanup 'never)
-(add-hook 'kill-emacs-hook #'recentf-save-list)
 (save-place-mode 1)
 (windmove-default-keybindings)
 (global-auto-revert-mode 1)
@@ -69,6 +65,12 @@
   :config
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+
+;;; Recent files
+(recentf-mode 1)
+(setq recentf-max-saved-items 100
+      recentf-auto-cleanup 'never)
+(add-hook 'kill-emacs-hook #'recentf-save-list)
 
 ;;; UI packages
 (use-package command-log-mode)
