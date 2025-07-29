@@ -25,6 +25,8 @@
 (blink-cursor-mode 0)
 (set-fringe-mode 10)
 (global-visual-line-mode 1)
+;; Display prettier versions of common programming symbols in all buffers.
+(global-prettify-symbols-mode 1)
 ;; Keep one line visible below the cursor to avoid the mode line
 ;; obscuring text near the bottom of the buffer.
 (setq scroll-margin 1)
