@@ -202,11 +202,18 @@
   :init
   (setq evil-want-integration t
         evil-want-keybinding nil
+        evil-respect-visual-line-mode t
         evil-normal-state-cursor 'box
         evil-insert-state-cursor 'bar
         evil-visual-state-cursor 'hollow)
   :config
   (evil-mode 1)
+  (evil-global-set-key 'motion (kbd "h") #'evil-backward-char)
+  (evil-global-set-key 'motion (kbd "j") #'evil-next-visual-line)
+  (evil-global-set-key 'motion (kbd "k") #'evil-previous-visual-line)
+  (evil-global-set-key 'motion (kbd "l") #'evil-forward-char)
+  (evil-global-set-key 'motion (kbd "0") #'evil-beginning-of-line)
+  (evil-global-set-key 'motion (kbd "$") #'evil-end-of-line)
 )
 
 (use-package evil-collection
