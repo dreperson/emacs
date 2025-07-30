@@ -30,7 +30,7 @@
 ;; Keep one line visible below the cursor to avoid the mode line
 ;; obscuring text near the bottom of the buffer.
 (setq scroll-margin 1)
-(add-to-list 'default-frame-alist '(font . "Iosevka-22"))
+(add-to-list 'default-frame-alist '(font . "Iosevka-26"))
 (load-theme 'misterioso t)
 
 ;;; File handling
