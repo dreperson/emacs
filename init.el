@@ -237,15 +237,15 @@
         ispell-dictionary "en_US"))
 
 ;;; Visual selection with the mouse
-(defun my/evil-visual-on-mouse-select ()
-  "Enter `evil-visual-state` when selecting text with the mouse."
+(defun my/evil-activate-visual-after-mouse (event)
+  "Enter visual state after selecting text with the mouse."
   (when (and (bound-and-true-p evil-mode)
              (evil-normal-state-p)
-             (memq this-command '(mouse-set-region mouse-drag-region)))
+             (region-active-p))
     ;; Use inclusive selection to mimic Vim's visual behaviour
     (evil-visual-select (region-beginning) (region-end) 'inclusive)))
 
-(add-hook 'activate-mark-hook #'my/evil-visual-on-mouse-select)
+(advice-add 'mouse-drag-region :after #'my/evil-activate-visual-after-mouse)
 
 ;;; PDF tools
 (use-package pdf-tools
